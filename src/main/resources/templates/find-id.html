@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>아이디 찾기</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/css/find-id.css">
+    <script src="/js/find-id.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>아이디 찾기</h1>
+
+    <!-- alertMessage가 있을 때만 이 div가 렌더링되므로, 불필요한 alert 창이 사라짐 -->
+    <form th:action="@{/find-id}" method="post">
+        <!-- 오류 메시지 표시 -->
+        <div th:if="${alertMessage}" class="alert" th:text="${alertMessage}"></div>
+
+        <div class="input-container">
+            <i class="fas fa-envelope"></i> <!-- 이메일 아이콘 -->
+            <input type="email" id="email" name="email" placeholder="이메일" required />
+        </div>
+        <div class="input-container">
+            <i class="fas fa-user"></i> <!-- 이름 아이콘 -->
+            <input type="text" id="name" name="name" placeholder="이름" required />
+        </div>
+        <div class="input-container">
+            <i class="fas fa-calendar-alt"></i> <!-- 생년월일 아이콘 -->
+            <input type="text" id="birthDate" name="birthDate" placeholder="생년월일" required />
+        </div>
+        <button type="submit">아이디 찾기</button>
+    </form>
+
+    <!-- 회원가입, 로그인, 비밀번호 찾기 링크 -->
+    <div class="link-container">
+        <p>아직 회원이 아니신가요? <a th:href="@{/register}">회원가입</a></p>
+        <p>회원이신가요? <a th:href="@{/login}">로그인</a></p>
+        <p><a th:href="@{/find-password}">비밀번호를 잊어버리셨나요?</a></p>
+        <p><a th:href="@{/}">홈 화면으로 가기</a></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+<th:block th:replace="~{header :: header}"></th:block>
+    <main>
+        <section class="notice">
+            <div class="page-title">
+                <div class="container">
+                    <h3>자유 게시판</h3>
+                </div>
+            </div>
+            <!-- 검색 영역 -->
+            <div id="board-search">
+                <div class="container">
+                    <div class="search-window">
+                        <form method="get" action="/board">
+                            <div class="search-wrap">
+                                <input id="search" type="search" name="search" placeholder="검색어를 입력해주세요." th:value="${searchKeyword}">
+                                <button type="submit" class="btn btn-dark">검색</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- 게시글 목록 영역 -->
+            <div id="board-list">
+                <div class="container">
+                    <table class="board-table">
+                        <thead>
+                        <tr>
+                            <th class="th-num">번호</th>
+                            <th class="th-title">제목</th>
+                            <th class="th-writer">작성자</th>
+                            <th class="th-date">등록일</th>
+                            <th class="th-view">조회수</th>
+                            <th class="th-great">좋아요</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="board, iterStat : ${board}">
+                            <td class="td-num" th:text="${iterStat.count}"></td>
+                            <td class="td-title">
+                                <a th:href="@{/board/board-detail/{id}(id=${board.id})}" th:text="${board.subject}"></a>
+                            </td>
+                            <td class="td-writer" th:text="${board.writer}"></td>
+                            <td class="td-date" th:text="${board.date}"></td>
+                            <td class="td-view" th:text="${board.view}"></td>
+                            <td class="td-great">
+                                ❤️ <span th:text="${board.great}"></span>&nbsp;&nbsp;💬 <span th:text="${board.commentCount}"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- 페이지네이션 영역 -->
+            <div class="board-footer">
+                <div class="container">
+                    <div th:if="${session.nickname != null}">
+                        <a href="/board/board-write" class="btn" id="write_btn">✏️ 글쓰기</a>
+                    </div>
+                    <div class="pagination">
+                            <span th:if="${pageNum > 1}">
+                                <a th:href="@{/board(pageNum=${pageNum - 1}, search=${searchKeyword})}" class="prev">&laquo; 이전</a>
+                            </span>
+                        <span th:if="${pageNum <= 1}" class="prev disabled">&laquo; 이전</span>
+
+                        <span th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                                <a th:if="${i == pageNum}" th:href="@{/board(pageNum=${i}, search=${searchKeyword})}" class="active" th:text="${i}"></a>
+                                <a th:if="${i != pageNum}" th:href="@{/board(pageNum=${i}, search=${searchKeyword})}" th:text="${i}"></a>
+                            </span>
+
+                        <span th:if="${pageNum < totalPages}">
+                                <a th:href="@{/board(pageNum=${pageNum + 1}, search=${searchKeyword})}" class="next">다음 &raquo;</a>
+                            </span>
+                        <span th:if="${pageNum >= totalPages}" class="next disabled">다음 &raquo;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<th:block th:replace="~{footer :: footer}"></th:block>
+</body>
+</html>

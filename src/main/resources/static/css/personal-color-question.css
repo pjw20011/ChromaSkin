@@ -1,0 +1,113 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.image-item {
+    text-align: center;
+    width: 220px;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.image-item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.image-item:hover {
+    transform: scale(1.05);
+}
+
+.question-container {
+    margin-bottom: 40px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    text-align: left;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+.color-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 1px solid #000;
+    vertical-align: middle;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #333;
+}
+
+/* Added for visual separation */
+hr {
+    border: 0;
+    height: 2px;
+    background: #ddd;
+    margin: 40px 0;
+}

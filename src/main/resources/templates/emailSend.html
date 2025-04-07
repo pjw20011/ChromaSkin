@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>메일 인증</title>
+  <!-- CSS 파일 연결 -->
+  <link rel="stylesheet" href="/css/emailSend.css"> <!-- CSS 파일 연결 -->
+  <!-- jQuery 라이브러리 로드 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- JS 파일 연결 -->
+  <script src="/js/emailSend.js" defer></script> <!-- 분리한 JS 파일 -->
+</head>
+<body>
+<div class="container">
+  <div id="mail_input" name="mail_input">
+    <input type="text" name="mail" id="mail" placeholder="이메일 입력" th:data-registered-email="${registeredEmail}" th:value="${registeredEmail}" readonly>
+    <button type="button" id="sendBtn" name="sendBtn" onclick="sendNumber()">인증 번호</button>
+  </div>
+  <div id="mail_number" name="mail_number" style="display: none">
+    <input type="text" name="number" id="number" placeholder="이메일 인증번호">
+    <button type="button" name="confirmBtn" id="confirmBtn" onclick="confirmNumber()">이메일 인증</button>
+    <p>인증 가능 시간: <span id="countdown">05:00</span> 남았습니다.</p>
+  </div>
+</div>
+
+<br>
+<input type="text" id="Confirm" name="Confirm" style="display: none" value="">
+</body>
+</html>

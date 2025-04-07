@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>로그인</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/login.js" defer></script>
+    <meta name="successMessage" th:if="${successMessage}" th:content="${successMessage}">
+    <meta name="alertMessage" th:if="${alertMessage}" th:content="${alertMessage}">
+</head>
+<body>
+<div class="container">
+    <h1>로그인</h1>
+
+    <form th:action="@{/authenticate}" method="post">
+        <div class="input-container">
+            <i class="fas fa-user"></i> <!-- 아이디 아이콘 -->
+            <input type="text" id="username" name="username" placeholder="아이디" required />
+        </div>
+        <div class="input-container">
+            <i class="fas fa-lock"></i> <!-- 비밀번호 아이콘 -->
+            <input type="password" id="password" name="password" placeholder="비밀번호" required />
+        </div>
+        <div>
+            <button type="submit">로그인</button>
+        </div>
+    </form>
+
+    <!-- 회원가입 및 아이디/비밀번호 찾기 링크 -->
+    <div class="link-container">
+        <p>아직 회원이 아니신가요? <a th:href="@{/register}">회원가입</a></p>
+        <p><a th:href="@{/find-id}">아이디를 잊어버리셨나요?</a></p>
+        <p><a th:href="@{/find-password}">비밀번호를 잊어버리셨나요?</a></p>
+        <p><a th:href="@{/}">홈 화면으로 가기</a></p>
+    </div>
+</div>
+</body>
+</html>

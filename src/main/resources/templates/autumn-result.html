@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autumn Warm Tone</title>
+    <link rel="stylesheet" href="/css/autumn-result.css">
+    <script src="/js/api-keys.js"></script>
+    <script src="/js/autumn-result.js" defer></script>
+  </head>
+  <body>
+
+    <h1>당신의 퍼스널 컬러는 <span class="highlight">가을 웜톤</span>입니다!</h1>
+    <p><span class="highlight">가을 웜톤</span>은 따뜻하고 고급스러운 이미지로, 깊이 있는 색상들이 잘 어울립니다.<br>톤 다운된 컬러와 차분한 느낌의 계열이 이상적입니다.</p>
+
+    <!-- 가을 웜톤의 특징 카드 섹션 -->
+    <div class="card">
+      <div class="text-section">
+        <h2>가을 웜톤의 특징</h2>
+        <p><strong>피부톤</strong>: 따뜻한 베이지나 올리브 톤, 깊고 차분한 이미지가 강한 타입</p>
+        <p><strong>추천 색상</strong>: 브라운, 카키, 테라코타, 골드, 올리브 그린, 와인</p>
+        <p><strong>어울리는 메이크업</strong>: 차분한 컬러의 립 제품과 따뜻한 브론즈 계열의 아이섀도 추천</p>
+      </div>
+      <img src="./image/autumn-warm.jpg" alt="가을 웜톤 이미지">
+    </div>
+
+    <!-- 색상 팔레트 제목 -->
+    <div class="palette-title">가을 웜톤 팔레트</div>
+
+    <div class="color-palette">
+      <div class="oyster-white">Oyster White</div>
+      <div class="warm-beige">Warm Beige</div>
+      <div class="coffee-brown">Coffee Brown</div>
+      <div class="dark-chocolate-brown">Dark Chocolate Brown</div>
+      <div class="mahogany">Mahogany</div>
+      <div class="camel">Camel</div>
+
+      <div class="gold">Gold</div>
+      <div class="medium-warm-bronze">Warm Bronze</div>
+      <div class="yellow-gold">Yellow Gold</div>
+      <div class="mustard">Mustard</div>
+      <div class="pumpkin">Pumpkin</div>
+      <div class="terracotta">Terracotta</div>
+
+      <div class="rust">Rust</div>
+      <div class="deep-peach">Deep Peach</div>
+      <div class="salmon">Salmon</div>
+      <div class="orange">Orange</div>
+      <div class="orange-red">Orange Red</div>
+      <div class="bittersweet-red">Bittersweet Red</div>
+
+      <div class="dark-tomato-red">Tomato Red</div>
+      <div class="lime-green">Lime Green</div>
+      <div class="chartreuse">Chartreuse</div>
+      <div class="deep-yellow-green">Yellow Green</div>
+      <div class="moss-green">Moss Green</div>
+      <div class="grayed-yellow-green">Grayed Yellow Green</div>
+
+      <div class="olive-green">Olive Green</div>
+      <div class="jade-green">Jade Green</div>
+      <div class="forest-green">Forest Green</div>
+      <div class="turquoise">Turquoise</div>
+      <div class="teal-blue">Teal Blue</div>
+      <div class="deep-periwinkle-blue">Periwinkle Blue</div>
+    </div>
+
+    <div class="lip-product">
+      <h2>추천 립 제품</h2>
+      <div class="lip-product-list">
+        <!-- th:each로 제품 리스트를 동적으로 반복 렌더링 -->
+        <div class="lip-product-item" th:each="product : ${lipProducts}">
+          <img th:src="${product.image_link}" alt="Lip Product" />
+          <div class="lip-product-info">
+            <p class="product-name" th:text="${product.product}"></p>
+            <a class="product-link" th:href="${product.detail_link}" target="_blank">자세히 보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 유튜브 영상 추천 섹션 -->
+    <div id="youtube-section">
+      <h2>추천 가을 웜톤 메이크업 영상</h2>
+      <div class="video-container" id="video-container"></div>
+    </div>
+
+    <a href="/" class="btn">메인 페이지로 돌아가기</a>
+
+  </body>
+</html>

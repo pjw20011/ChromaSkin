@@ -1,0 +1,210 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #E0F7FA;
+    color: #0077FF;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #0077FF;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #4682B4; /* Steel Blue - 시원한 파란색 */
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.color-palette div {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.color-palette div:hover {
+    transform: scale(1.1);
+}
+
+/* 팔레트 색상 정의 */
+.soft-white { background-color: #F8F8F2; color: #333; }
+.rose-beige { background-color: #EACBC4; }
+.cocoa { background-color: #7B4E41; }
+.rose-brown { background-color: #A6766F; }
+.light-blue-gray { background-color: #A0BCC7; }
+.charcoal-blue-gray { background-color: #495670; }
+.grayed-navy { background-color: #394958; }
+.gray-blue { background-color: #6785A1; }
+.powder-blue { background-color: #A1C4D8; }
+.sky-blue { background-color: #7BBEDC; }
+.medium-blue { background-color: #3B5998; }
+.periwinkle-blue { background-color: #C3CDE6; }
+.pastel-aqua { background-color: #A2E8E6; }
+.pastel-blue-green { background-color: #7BC9C4; }
+.medium-blue-green { background-color: #2E8B57; }
+.deep-blue-green { background-color: #008080; }
+.light-lemon-yellow { background-color: #FFFACD; color: #333; }
+.powder-pink { background-color: #F3C1C6; }
+.pastel-pink { background-color: #FFB6C1; }
+.rose-pink { background-color: #E75480; }
+.deep-rose { background-color: #B5485B; }
+.watermelon { background-color: #FC6C85; }
+.blue-red { background-color: #8A2BE2; }
+.burgundy { background-color: #800020; }
+.lavender { background-color: #E6E6FA; color: #333; }
+.orchid { background-color: #DA70D6; }
+.mauve { background-color: #E0B0FF; }
+.raspberry { background-color: #E30B5D; }
+.soft-fuchsia { background-color: #FF00FF; }
+.plum { background-color: #DDA0DD; }
+
+/* 팔레트 제목 */
+.palette-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #0077FF;
+    font-weight: bold;
+}
+
+/* 카드 스타일 */
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+.card .text-section {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.card img {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 30px;
+    background-color: #0077FF; /* 버튼 배경색을 여름 쿨톤에 어울리는 시원한 파란색으로 변경 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #3399FF; /* 버튼 hover 시 밝은 파란색으로 변경 */
+}
+
+
+/* 유튜브 섹션 스타일 */
+#youtube-section {
+    margin-top: 40px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.video-container iframe {
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* 립 제품 섹션 스타일 */
+.lip-product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* 각 제품 간의 간격 */
+}
+
+.lip-product-item {
+    flex-basis: 22%; /* 4개씩 표시되도록 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 세로 정렬 */
+    background-color: #E6F7FF; /* 밝은 시원한 배경 색상 추가 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+    margin: 10px; /* 상하좌우 간격 */
+}
+
+.lip-product-item img {
+    width: 150px; /* 이미지 크기 조정 */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 약간의 그림자 */
+}
+
+.lip-product-info {
+    margin-top: 15px;
+}
+
+.lip-product-info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: #0077FF; /* 시원한 파란색으로 변경 */
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.product-price {
+    color: #3399FF; /* 연한 파란색으로 변경 */
+}
+
+.product-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #0077FF; /* 버튼 배경색을 여름 쿨톤에 맞는 시원한 파란색으로 변경 */
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.product-link:hover {
+    background-color: #3399FF; /* 버튼 hover 시 밝은 파란색으로 변경 */
+}

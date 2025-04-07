@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+.container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    color: #333;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+.input-container i {
+    margin-right: 10px;
+    color: #666;
+    font-size: 18px;
+    width: 30px; /* 이모티콘 아이콘의 고정된 너비 */
+    text-align: center; /* 아이콘을 가운데 정렬 */
+}
+
+.input-container input,
+.input-container select {
+    width: calc(100% - 40px); /* 아이콘과 여백을 제외한 너비 */
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #1c1b1b;
+}
+
+.secondary-button {
+    background-color: #000000;
+    margin-top: 5px;
+}
+
+.secondary-button:hover {
+    background-color: #1c1b1b;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 18px;
+    display: none;
+}
+
+.error-message {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}

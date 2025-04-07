@@ -1,0 +1,65 @@
+/* style.css */
+
+/* 전체 배경색 */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f0fa;
+    color: #333;
+}
+
+/* 전체 컨테이너 스타일 */
+.container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 입력 필드 및 버튼을 세로로 배치 */
+#mail_input, #mail_number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+
+/* 버튼 스타일 */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #000000; /* 보라색 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1c1b1b; /* 더 진한 보라색 */
+}
+
+/* 타이머 스타일 */
+#countdown {
+    font-weight: bold;
+    color: #000000;
+}

@@ -1,0 +1,64 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.2'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'ChormaSkin'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation 'org.springframework.boot:spring-boot-devtools'
+
+	// security (비밀번호 암호화 - 회원가입, 로그인 시 사용)
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-core'
+	implementation 'org.springframework.security:spring-security-config'
+	implementation 'org.springframework.security:spring-security-web'
+
+	// mail
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'jakarta.mail:jakarta.mail-api:2.0.0'
+	implementation 'com.sun.mail:jakarta.mail:2.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// MongoDB Connector
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+	// lombok
+	implementation 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	// auto restart
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// 일단 안지움 근데 이거 아이디 중복 체크 할 때 쓰는거임
+tasks.withType(JavaCompile) {
+	options.compilerArgs << '-parameters'
+}

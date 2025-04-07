@@ -1,0 +1,327 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body 설정 */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    /* overflow-x: hidden; 가로 스크롤 방지 */
+}
+
+/* Wrapper 설정 */
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Main content */
+#session {
+    width: 70%;
+    height: 700px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#session {
+    position: relative;
+}
+
+
+#session-title {
+    margin-top: 50px;
+    display: flex; /* 활성화 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#session-title h3 {
+    font-size: 30px;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+}
+
+#session-title hr {
+    width: 150%;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+#session-title p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+}
+
+/* 이미지와 파일 버튼을 나란히 배치 */
+#session-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* 이미지와 버튼 사이의 간격 조정 */
+    margin-top: 70px;
+}
+
+#main-img-box {
+    width: 300px;
+    height: 300px;
+}
+
+#main-img-box .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#main-content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* 각 버튼 간의 간격 조정 */
+}
+
+/*!* loading 오버레이 지정 *!*/
+/*.main-content-wrapper {*/
+/*    position: relative;*/
+/*}*/
+
+.input-file-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.input-file-button:hover {
+    background-color: #45a049;
+}
+
+#input-file, #input-webcam {
+    display: none; /* 실제 파일 선택 버튼과 웹캠 버튼을 숨기기 */
+}
+
+
+
+
+#session-content{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* image box */
+#main-img-box{
+    width: 65%;
+    max-width: 700px; /* 원하는 이미지 너비 */
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+/* 이미지 컨테이너 */
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* 이미지가 넘치지 않게 설정 */
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+/* 이미지에 그라데이션 마스크 효과 적용 */
+.image-container img {
+    width: 100%;
+    height: auto;
+    /* -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%); */
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+}
+
+/* 이미지 스타일 */
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* main-content-box */
+#main-content-box{
+    width: 35%;
+    height: auto; /* 높이를 고정하지 않음 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.input{
+    display: none;
+}
+
+.input-file-button{
+    padding: 20px 30px;
+    background-color: white;
+    border: 1px solid #000000;
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.input-file-button:hover{
+    background-color: #000000;
+    color: white;
+    transition: 0.5s;
+}
+
+/* 불러온 파일 정보와 검사하기 버튼 */
+#file-info {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#file-name {
+    font-size: 14px;
+    color: #333;
+}
+
+#check-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#check-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+/* 로딩 오버레이 스타일 */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* 메인 콘텐츠 위에 표시되도록 높은 z-index 설정 */
+    pointer-events: none; /* 사용자 상호작용 차단 */
+}
+
+/* session을 기준으로 로딩 오버레이의 위치를 조정 */
+.wrapper {
+    position: relative;
+}
+
+.loading-container {
+    text-align: center;
+    color: #333;
+}
+
+#loading-text {
+    font-size: 2.5em;
+    font-weight: bold;
+    background: linear-gradient(to right, lightgray 50%, black 50%);
+    -webkit-background-clip: text;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: colorFill 2.5s linear infinite;
+}
+
+@keyframes colorFill {
+    0% {
+        background-position: 0 100%;
+    }
+    100% {
+        background-position: -100% 100%;
+    }
+}
+
+.loading-message {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 10px;
+}
+
+
+
+/*webcam*/
+
+/* 모달 설정 */
+.modal {
+    display: none; /* 모달 기본 숨김 */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 배경을 어둡게 */
+    align-items: center;
+    justify-content: center;
+}
+
+/* 모달 콘텐츠 설정 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px; /* 모달 최대 너비 설정 */
+    width: 90%; /* 너비 비율로 설정 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    position: relative;
+    text-align: center;
+}
+
+/* 닫기 버튼 설정 */
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 웹캠 설정 */
+#webcam {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* 웹캠 비디오 둥근 모서리 */
+    margin-bottom: 20px;
+}
+
+/* 촬영 버튼 설정 */
+#capture-webcam {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#capture-webcam:hover {
+    background-color: #45a049;
+}

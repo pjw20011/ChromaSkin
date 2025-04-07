@@ -1,0 +1,100 @@
+body{
+    margin: 0;
+    padding-top: 100px;
+    font-family: 'Playfair Display', serif;
+}
+
+.create-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+#board_list{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: black;
+    width: 35px;
+    height: 30px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 5px;
+    background-color: rgba(233, 233, 233, 0.5);
+}
+
+#board_list:hover{
+    background-color: rgb(150, 150, 150);
+}
+
+.create-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4a4a4a;
+}
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.input-group textarea {
+    height: 200px;
+    resize: none;
+}
+.image-preview {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+.image-preview img {
+    max-width: 100px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.image-preview .remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    padding: 0;
+}
+#image-previews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+.remove-image:hover{
+    background: rgba(0, 0, 0, 0.7);
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}

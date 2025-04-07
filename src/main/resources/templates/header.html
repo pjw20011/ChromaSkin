@@ -1,0 +1,48 @@
+<header>
+    <div id="header-box">
+        <div id="main-logo"><a href="/"><img src="/image/logo.png" alt="메인 로고"></a></div>
+        <div id="header-test">
+            <div id="header-default">
+                <div class="defalut-box" id="search-box">
+                    <div id="search-img"><img src="/image/search_icon.png" alt="검색"></div>
+                    <input type="text" id="search-bar" placeholder="SEARCH">
+                </div>
+                <div class="" id="header-nav">
+                    <ul>
+                        <a href="/skin-type"><li><div class="main-nav-item">피부</div></li></a>
+<!--                        <a href="/face-shape"><li><div class="main-nav-item">얼굴</div></li></a>-->
+                        <a href="/personal-color"><li><div class="main-nav-item">퍼스널 컬러</div></li></a>
+                        <a href="/makeup"><li><div class="main-nav-item">파우더 룸</div></li></a>
+                        <a href="/cosmetics/products"><li><div class="main-nav-item">스킨·케어</div></li></a>
+                        <a href="/board"><li><div class="main-nav-item">커뮤니티</div></li></a>
+                    </ul>
+                </div>
+                <div class="default-box" id="box3">
+                    <nav id="user-nav">
+                        <div th:if="${nickname == null}">
+                            <ul class="user-service">
+                                <li id="login"><a href="/login" class="user-item">로그인</a></li>
+                                <li id="join"><a href="/register" class="user-item">회원가입</a></li>
+                            </ul>
+                        </div>
+                        <div th:if="${nickname != null}">
+                            <ul class="user-service">
+                                <li class="user-item"><span th:text="${nickname} + '님 환영합니다!'"></span></li>
+                                <li id="my-page">
+                                    <a href="/my-page" class="user-item" >
+                                        <img src="/image/my_icon.png" alt="마이페이지">
+                                    </a>
+                                </li>
+                                <li id="logout">
+                                    <a href="#" class="user-item" onclick="document.getElementById('logoutForm').submit(); return false;">로그아웃</a>
+                                    <form id="logoutForm" th:action="@{/logout}" method="post" style="display:none;">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,210 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #E0E0FF;
+    color: #3333CC;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #3333CC;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #8B0000; /* Dark Red - 강렬한 다크 레드 */
+}
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.color-palette div {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.color-palette div:hover {
+    transform: scale(1.1);
+}
+
+/* 팔레트 색상 정의 */
+.pure-white { background-color: #FFFFFF; color: #333; }
+.light-true-gray { background-color: #C4C4C4; }
+.medium-true-gray { background-color: #7F7F7F; }
+.charcoal-gray { background-color: #595959; }
+.black { background-color: #000000; }
+.gray-beige { background-color: #C4B8A5; }
+.navy-blue { background-color: #172B4D; }
+.true-blue { background-color: #1D3A5F; }
+.royal-blue { background-color: #314980; }
+.hot-turquoise { background-color: #00A9B0; }
+.chinese-blue { background-color: #2E77B2; }
+.lemon-yellow { background-color: #FFFA92; color: #333; }
+.light-true-green { background-color: #5BB95C; }
+.true-green { background-color: #249B6D; }
+.emerald-green { background-color: #006D58; }
+.pine-green { background-color: #00473F; }
+.shocking-pink { background-color: #FF6EB4; }
+.deep-hot-pink { background-color: #FF1493; }
+.magenta { background-color: #D0006F; }
+.fuchsia { background-color: #E2007A; }
+.royal-purple { background-color: #621D67; }
+.bright-burgundy { background-color: #81293B; }
+.deep-blue-red { background-color: #8E2430; }
+.true-red { background-color: #FF0D0D; }
+.icy-green { background-color: #D8F2F1; color: #333; }
+.icy-yellow { background-color: #F9EDE7; color: #333; }
+.icy-aqua { background-color: #ADEBEC; color: #333; }
+.icy-violet { background-color: #CBC3E3; color: #333; }
+.icy-pink { background-color: #FFB0D6; color: #333; }
+.icy-blue { background-color: #B4DAE7; color: #333; }
+
+/* 팔레트 제목 */
+.palette-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #3333CC;
+    font-weight: bold;
+}
+
+
+/* 카드 스타일 */
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+.card .text-section {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.card img {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 30px;
+    background-color: #3333CC; /* 겨울 쿨톤에 어울리는 차가운 파란색 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #4444dd; /* 버튼 hover 시 더 밝은 파란색 */
+}
+
+/* 유튜브 섹션 스타일 */
+#youtube-section {
+    margin-top: 40px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.video-container iframe {
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* 립 제품 섹션 스타일 */
+.lip-product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* 각 제품 간의 간격 */
+}
+
+.lip-product-item {
+    flex-basis: 22%; /* 4개씩 표시되도록 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 세로 정렬 */
+    background-color: #E6E6FF; /* 차가운 겨울톤 배경 색상 추가 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+    margin: 10px; /* 상하좌우 간격 */
+}
+
+.lip-product-item img {
+    width: 150px; /* 이미지 크기 조정 */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 약간의 그림자 */
+}
+
+.lip-product-info {
+    margin-top: 15px;
+}
+
+.lip-product-info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: #3333CC; /* 차가운 파란색으로 변경 */
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.product-price {
+    color: #6666FF; /* 연한 파란색으로 변경 */
+}
+
+.product-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #3333CC; /* 버튼 배경색을 겨울 쿨톤에 맞는 차가운 파란색으로 변경 */
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.product-link:hover {
+    background-color: #6666FF; /* 버튼 hover 시 밝은 파란색으로 변경 */
+}

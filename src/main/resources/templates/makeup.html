@@ -1,0 +1,112 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Chroma Skin Powder Room</title>-->
+<!--  <link rel="stylesheet" href="/css/header.css">-->
+<!--  <link rel="stylesheet" href="/css/footer.css">-->
+<!--  <link rel="stylesheet" href="/css/makeup.css">-->
+
+<!--  <script src="/js/makeup.js" defer></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>-->
+<!--  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrapper">-->
+<!--  &lt;!&ndash; Header Include &ndash;&gt;-->
+<!--  <th:block th:replace="~{header :: header}"></th:block>-->
+
+<!--  <h1>CHROMA SKIN POWDER ROOM</h1>-->
+
+<!--  &lt;!&ndash; Makeup Type Selection &ndash;&gt;-->
+<!--  <div class="control-buttons">-->
+<!--    <button class="control-button" onclick="selectMakeupType('foundation')">-->
+<!--      <img src="/image/foundation.png" alt="Foundation Icon">Foundation-->
+<!--    </button>-->
+<!--    <button class="control-button" onclick="selectMakeupType('lipstick')">-->
+<!--      <img src="/image/lipstick.png" alt="Lipstick Icon">Lipstick-->
+<!--    </button>-->
+<!--  </div>-->
+
+<!--  <div id="nameButtons"></div>-->
+<!--  <div id="palette"></div>-->
+
+<!--  &lt;!&ndash; Video and Canvas &ndash;&gt;-->
+<!--  <div id="comparisonWrapper">-->
+<!--    <canvas id="comparisonCanvas" width="700" height="500"></canvas>-->
+<!--  </div>-->
+
+<!--  <script th:inline="javascript">-->
+<!--    const groupedLipsticks = /*[[${groupedLipsticks}]]*/ {};-->
+<!--    console.log("Fetched groupedLipsticks:", groupedLipsticks);-->
+<!--  </script>-->
+
+<!--  <th:block th:replace="footer :: footer"></th:block>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chroma Skin Powder Room</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/makeup.css">
+
+  <script src="/js/makeup.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+</head>
+<body>
+<div class="wrapper">
+  <!-- Header Include -->
+  <th:block th:replace="~{header :: header}"></th:block>
+
+  <h1>CHROMA SKIN POWDER ROOM</h1>
+
+  <!-- Makeup Type Selection -->
+  <div class="control-buttons">
+    <button class="control-button" onclick="selectMakeupType('foundation')">
+      <img src="/image/foundation.png" alt="Foundation Icon">Foundation
+    </button>
+    <button class="control-button" onclick="selectMakeupType('lipstick')">
+      <img src="/image/lipstick.png" alt="Lipstick Icon">Lipstick
+    </button>
+  </div>
+
+  <div id="nameButtons"></div>
+  <div id="palette"></div>
+   <script th:inline="javascript">
+     const groupedLipsticks = /*[[${groupedLipsticks}]]*/
+     console.log("Fetched groupedLipsticks:", groupedLipsticks);
+   </script>
+
+  <!-- Save Buttons -->
+  <div class="save-buttons">
+    <button id="saveFoundationButton" onclick="saveSelectedFoundation('파운데이션 이름', currentFoundationColor)" hidden>
+      파운데이션 저장
+    </button>
+    <button id="saveLipstickButton" onclick="saveSelectedLipstick('립스틱 ID', '립스틱 이미지', '립스틱 이름', '립스틱 브랜드', currentLipstickColor)" hidden>
+      립스틱 저장
+    </button>
+  </div>
+
+  <!-- Video and Canvas -->
+  <div id="comparisonWrapper">
+    <canvas id="comparisonCanvas" width="700" height="500"></canvas>
+  </div>
+
+  <script th:inline="javascript">
+    const nickname = /*[[${nickname}]]*/ 'Guest'; // 세션에서 전달된 nickname
+    console.log("Current User Nickname:", nickname);
+  </script>
+
+  <th:block th:replace="footer :: footer"></th:block>
+</div>
+</body>
+</html>

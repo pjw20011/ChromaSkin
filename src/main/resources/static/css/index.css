@@ -1,0 +1,253 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body 설정 */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    /* overflow-x: hidden; 가로 스크롤 방지 */
+}
+
+/* Wrapper 설정 */
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* 메인 배너 섹션 설정 */
+/* 슬라이드 컨테이너 */
+#main-img-box {
+    width: 90%;
+    height: 650px;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 슬라이드 트랙 */
+.slide-track {
+    display: flex; /* 이미지를 가로로 나열 */
+    height: 650px;
+    transition: transform 0.5s ease-in-out; /* 슬라이드 이동 시 부드럽게 전환 */
+}
+
+/* 각 슬라이드 */
+.session1-img {
+    min-width: 100%; /* 슬라이드가 화면의 100% 차지 */
+    height: 100%;
+    position: relative;
+}
+
+#main-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.s1-img-content{
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(10%, -50%);
+    text-align: center;
+}
+.s1-img-content p{
+    font-size: 24px;
+    color: white;
+    text-shadow: 1px 5px 5px #333;
+    text-align: center;
+}
+
+.s2-img-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.s2-img-content p{
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    text-shadow: 1px 5px 5px #fff;
+    text-align: center;
+}
+
+.s3-img-content{
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translate(10%, -50%);
+    text-align: center;
+}
+
+.s3-img-content p{
+    font-size: 24px;
+    color: #000;
+    font-weight: bold;
+    text-shadow: 1px 5px 5px #fff;
+    text-align: center;
+}
+
+
+
+/* session 2 설정 */
+#main-content-box {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px 0;
+
+    z-index: 1;
+}
+
+.session2-img {
+    width: 40%;
+    height: 400px;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.session2-img > img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.session2-img p{
+    position: absolute;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 5%;
+    text-shadow: 1px 5px 5px #333;
+}
+
+.detail-link {
+    position: absolute;
+    margin-top: 10%;
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #333;
+
+}
+
+.detail-link:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
+
+/* session 3 설정 */
+#main-cosmetic-box {
+    width: 100%;
+    padding: 50px 0;
+    text-align: center;
+}
+
+#session3-title {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+#session3-content-box{
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.session3-img {
+    width: 350px;
+    height: 350px;
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: center; */
+    /* align-items: flex-end; */
+}
+
+.session3-img > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* test */
+
+.s3-img-title {
+    margin-top: 30px;
+    font-size: 16px;
+}
+
+#cosmetic-detail-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px;
+}
+
+#cosmetic-detail-link-div{
+    width: 200px;
+}
+
+#cosmetic-detail-link-a {
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #ececec;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+#cosmetic-detail-link-a:hover {
+    background-color: #333;
+    color: white;
+}
+
+
+
+/* 반응형 설정 */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .session2-img {
+        width: 80%;
+    }
+
+    .session3-img-box {
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    #footer-nav, #sns-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #footer-nav li, #sns-nav li {
+        margin-bottom: 10px;
+    }
+}

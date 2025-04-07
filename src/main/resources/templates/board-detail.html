@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세보기</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/board-detail.css">
+    <script src="/js/board-detail.js" defer></script>
+</head>
+<body>
+<th:block th:replace="~{header :: header}"></th:block>
+<article>
+    <section id="detail-wrap">
+        <table id="board-detail">
+            <tbody>
+            <tr>
+                <th>제목</th>
+                <td th:text="${board.subject ?: '제목 없음'}">1</td>
+                <th>조회수</th>
+                <td th:text="${board.view ?: 0}">0</td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td th:text="${board.writer ?: '작성자 없음'}">작성자</td>
+                <th>작성일</th>
+                <td th:text="${board.date ?: '날짜 없음'}">2024-11-15</td>
+            </tr>
+            <tr>
+                <td colspan="4" class="content" th:text="${board.content ?: '게시글 내용이 없습니다.'}">게시글 내용</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="content-footer">
+            <div class="board-great-comment-container">
+                <form class="board-great-form">
+                    <input type="hidden" name="boardId" th:value="${board.id}">
+                    <img class="board-great-button great-button"
+                         th:src="${(likedBoards != null && likedBoards.contains(board.id)) ? '/image/great_af_icon.png' : '/image/great_be_icon.png'}"
+                         alt="좋아요"
+                         data-board-id="${board.id}"
+                         onclick="toggleBoardGreat(this)">
+                </form>
+
+                <!-- 좋아요 수가 1 이상일 때만 표시 -->
+                <span th:attr="style=${board.great > 0} ? 'display: flex;' : 'display: none;'" id="greatCount" th:text="${board.great}">0</span>
+
+                <img class="board-comment-img" src="/image/board_comment_icon.png" alt="게시판 댓글">
+
+                <!-- 댓글 수가 1 이상일 때만 표시 -->
+                <span th:if="${board.commentCount > 0}" id="commentCount" th:text="${board.commentCount}">0</span>
+            </div>
+            <a href="/board" class="btn">목록으로</a>
+            <a th:href="@{/board/update(id=${board.id})}" class="btn" th:if="${board.writer == session.nickname}">수정</a>
+            <form method="POST" action="/board/delete" class="delete-board-form">
+                <input type="hidden" name="boardId" th:value="${board.id}">
+                <input type="hidden" name="boardSubject" th:value="${board.subject}">
+                <button class="board-delete-btn" th:if="${board.writer == session.nickname}" onclick="deleteBoard(this)">삭제</button>
+            </form>
+        </div>
+
+        <!-- 댓글 리스트 -->
+        <div th:each="comment : ${comments}">
+            <div class="comment">
+                <div class="user_info">
+                    <div class="author-info">
+                        <img src="/image/user_logo.png" alt="작성자 : ">
+                        <span class="comment-author" th:text="${comment.author ?: '작성자 없음'}"></span>
+                    </div>
+                    <div class="image-button">
+                        <ul>
+                            <li><img class="replyButton" tabindex="0" src="/image/comment_be_icon.png" alt="답글"></li>
+                            <li>
+                                <form class="comment-great-form">
+                                    <input type="hidden" name="commentId" th:value="${comment.id}">
+                                    <img class="comment-great-button great-button"
+                                         th:src="${(likedComments != null && likedComments.contains(comment.id)) ? '/image/great_af_icon.png' : '/image/great_be_icon.png'}"
+                                         alt="좋아요"
+                                         onclick="toggleCommentGreat(this)">
+                                </form>
+                            </li>
+                            <li>
+                                <form method="POST" action="/comments/delete" class="delete-comment-form">
+                                    <input type="hidden" name="commentId" th:value="${comment.id}">
+                                    <img th:if="${comment.author == session.nickname}"
+                                         class="delete-button"
+                                         onclick="deleteComment(this)"
+                                         src="/image/delete_be_icon.png" alt="삭제">
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="comment-content" th:text="${comment.content ?: '댓글 내용이 없습니다.'}">댓글 내용</p>
+                <div class="comment-date">
+                    <span th:text="${comment.createdDate ?: '날짜 없음'}"></span>
+                    <div class="comment-great-box great-box" th:attr="style=${comment.great > 0} ? 'display: flex;' : 'display: none;'">
+                        <img class="comment-great-button" src="/image/great_af_icon.png" alt="좋아요_be" style="margin-right: 5px;">
+                        <span class="comment-great-counter" th:text="${comment.great ?: 0}">0</span>
+                    </div>
+                </div>
+
+
+                <!-- 대댓글 작성 폼 -->
+                <div class="replyForm-div" style="display: none;">
+                    <form class="comment-form" onsubmit="addReplyComment(event)">
+                        <input type="hidden" name="author" th:value="${session.nickname}">
+                        <input type="hidden" name="boardId" th:value="${board.id}">
+                        <input type="hidden" name="commentId" th:value="${comment.id}">
+                        <textarea name="content" required placeholder="대댓글을 입력하세요"></textarea>
+                        <button type="submit">대댓글 달기</button>
+                    </form>
+                </div>
+
+                <!-- 대댓글 목록 -->
+                <div class="replyComment-list" th:each="reply : ${repliesMap[comment.id]}">
+                    <div class="user_info">
+                        <div class="author-info">
+                            <img src="/image/user_logo.png" alt="작성자 : ">
+                            <span class="comment-author" th:text="${reply.author ?: '작성자 없음'}">작성자</span>
+                        </div>
+                        <div class="image-button">
+                            <ul>
+                                <li>
+                                    <form class="reply-great-form">
+                                        <input type="hidden" name="replyId" th:value="${reply.id}">
+                                        <img class="reply-great-button great-button"
+                                             th:src="${(likedReplies != null && likedReplies.contains(reply.id)) ? '/image/great_af_icon.png' : '/image/great_be_icon.png'}"
+                                             alt="좋아요"
+                                             onclick="toggleReplyGreat(this)">
+                                    </form>
+                                </li>
+                                <li>
+                                    <form method="POST" action="/reply/delete" class="delete-reply-form">
+                                        <input type="hidden" name="replyId" th:value="${reply.id}">
+                                        <img th:if="${reply.author == session.nickname}"
+                                             class="delete-button"
+                                             onclick="deleteReply(this)"
+                                             src="/image/delete_be_icon.png" alt="삭제">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="comment-content" th:text="${reply.content ?: '대댓글 내용'}"></p>
+                    <div class="comment-date">
+                        <span th:text="${reply.createdDate ?: '날짜 없음'}"></span>
+                        <div class="reply-great-box great-box" th:attr="style=${reply.great > 0} ? 'display: flex;' : 'display: none;'">
+                            <img class="reply-great-button" src="/image/great_af_icon.png" alt="좋아요_af" style="margin-right: 5px;">
+                            <span class="reply-great-counter" th:text="${reply.great ?: 0}">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- 댓글 작성 폼 -->
+        <form id="commentForm" class="comment-form" action="/comments/comment" method="post" onsubmit="addComment(event)">
+            <input type="hidden" name="author" th:value="${session.nickname}">
+            <input type="hidden" name="boardId" th:value="${board.id}">
+            <textarea name="content" required placeholder="댓글을 입력하세요"></textarea>
+            <button type="submit">댓글 달기</button>
+        </form>
+    </section>
+</article>
+
+<th:block th:replace="~{footer :: footer}"></th:block>
+</body>
+</html>

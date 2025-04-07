@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>퍼스널 컬러 진단</title>
+        <script src="/js/content.js" defer></script>
+        <script src="/js/loading.js" defer></script>
+        <link rel="stylesheet" href="/css/content.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
+
+        <script src="/js/personal-color.js" defer></script>
+    </head>
+    <body>
+        <div>
+            <!-- Header Include -->
+            <th:block th:replace="header :: header"></th:block>
+        </div>
+        <div class="wrapper">
+
+            <!-- Main Content -->
+            <div id="session">
+                <div id="session-title">
+                    <h3>퍼스널 컬러 진단</h3>
+                    <hr style="width: 190%;">
+                    <p>
+                        퍼스널 컬러 검사를 통해 당신에게<br>
+                        어울리는 색과 스타일을 찾아보세요.
+                    </p>
+                </div>
+                <div id="session-content">
+                    <div id="main-img-box">
+                        <div class="image-container">
+                            <img class="image" src="/image/session2_img2.jpg" alt="퍼스널 컬러 진단 이미지">
+                        </div>
+                    </div>
+
+                    <div id="main-content-box">
+                        <div id="webcam-box">
+                            <label class="input-file-button" for="input-webcam">웹캠 촬영하기</label>
+                            <button class="input" id="input-webcam" onclick="openWebcamModal()">웹캠 촬영하기</button>
+                        </div>
+
+                        <!-- 사진 불러오기 폼 -->
+                        <form th:action="@{/test-color}" method="post" enctype="multipart/form-data">
+                            <div id="file-box">
+                                <label class="input-file-button" for="input-file">사진 불러오기</label>
+                                <input type="hidden" name="nickname" th:value="${nickname}" />
+                                <input type="file" id="input-file" name="image" class="input" accept="image/*" required onchange="showFileInfo()">
+                            </div>
+
+                            <!-- CSRF 토큰을 자동으로 포함 -->
+<!--                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+
+                            <!-- 파일 정보 및 제출 버튼 -->
+                            <div id="file-info" style="display: none;">
+                                <p id="file-name"></p>
+                                <button type="submit" id="check-btn">진단하기</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="webcamModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeWebcamModal()">&times;</span>
+                    <h2>웹캠 촬영</h2>
+                    <video id="webcam" autoplay></video>
+                    <button id="capture-webcam">촬영하기</button>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                </div>
+            </div>
+
+            <!-- 로딩 오버레이 (session만 덮음) -->
+            <div id="loading-overlay" class="loading-overlay" style="display: none;">
+                <div class="loading-container">
+                    <span id="loading-text">CHROMA SKIN</span>
+                    <p class="loading-message">퍼스널 컬러 분석에 최대 30초가량의 시간이 소요 될 수 있습니다.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!-- Footer Include -->
+            <th:block th:replace="footer :: footer"></th:block>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Warm Tone</title>
+    <link rel="stylesheet" href="/css/spring-result.css">
+
+    <script src="/js/api-keys.js"></script>
+    <script src="/js/spring-result.js" defer></script>
+</head>
+<body>
+    <h1>당신의 퍼스널 컬러는 <span class="highlight">봄 웜톤</span>입니다!</h1>
+    <p><span class="highlight">봄 웜톤</span>은 따뜻하고 화사한 이미지로, 부드럽고 생기 있는 색상들이 잘 어울립니다.<br>밝고 따뜻한 파스텔톤과 골드 계열이 이상적입니다.</p>
+    <p>피부가 <span class="highlight">옅은 노란빛</span>을 띠는 경우가 많으며, 주로 밝고 따뜻한 색감의 옷과 메이크업이 어울립니다.</p>
+
+    <!-- 추가 설명: https://chaltteog13.tistory.com 에서 참고 -->
+    <div class="card">
+        <div class="text-section">
+            <h2>봄 웜톤의 특징</h2>
+            <p><strong>피부톤</strong>: 옅은 노란빛이 도는 피부, 맑고 부드러운 이미지가 강한 타입</p>
+            <p><strong>추천 색상</strong>: 따뜻한 파스텔톤, 코랄, 연한 피치색, 아이보리, 골드</p>
+            <p><strong>어울리는 메이크업</strong>: 화사하고 따뜻한 색상의 립 제품과 생기를 더하는 코랄이나 피치 색조의 아이섀도 추천</p>
+        </div>
+        <img src="./image/spring-warm.jpg" alt="봄 웜톤 이미지">
+    </div>
+
+    <div class="palette-title">봄 웜톤 팔레트</div>
+
+    <!-- 색상 팔레트 -->
+    <div class="color-palette">
+        <div class="ivory"><span>ivory</span></div>
+        <div class="buff"><span>buff</span></div>
+        <div class="light-warm-beige"><span>light warm beige</span></div>
+        <div class="light-camel"><span>light camel</span></div>
+        <div class="golden-tan"><span>golden tan</span></div>
+        <div class="medium-golden-brown"><span>medium golden brown</span></div>
+        <div class="light-warm-gray"><span>light warm gray</span></div>
+        <div class="light-clear-navy"><span>light clear navy</span></div>
+        <div class="light-clear-gold"><span>light clear gold</span></div>
+        <div class="bright-golden-yellow"><span>bright golden yellow</span></div>
+        <div class="pastel-yellow-green"><span>pastel yellow green</span></div>
+        <div class="medium-yellow-green"><span>medium yellow green</span></div>
+        <div class="bright-yellow-green"><span>bright yellow green</span></div>
+        <div class="apricot"><span>apricot</span></div>
+        <div class="light-orange"><span>light orange</span></div>
+        <div class="peach"><span>peach</span></div>
+        <div class="clear-salmon"><span>clear salmon</span></div>
+        <div class="bright-coral"><span>bright coral</span></div>
+        <div class="warm-pastel-pink"><span>warm pastel pink</span></div>
+        <div class="coral-pink"><span>coral pink</span></div>
+        <div class="clear-bright-warm-pink"><span>clear bright warm pink</span></div>
+        <div class="clear-bright-red"><span>clear bright red</span></div>
+        <div class="light-orange-red"><span>light orange red</span></div>
+        <div class="medium-violet"><span>medium violet</span></div>
+        <div class="light-periwinkle-blue"><span>light periwinkle blue</span></div>
+        <div class="dark-periwinkle-blue"><span>dark periwinkle blue</span></div>
+        <div class="light-true-blue"><span>light true blue</span></div>
+        <div class="light-warm-aqua"><span>light warm aqua</span></div>
+        <div class="clear-bright-aqua"><span>clear bright aqua</span></div>
+        <div class="medium-warm-turquoise"><span>medium warm turquoise</span></div>
+    </div>
+
+    <div class="lip-product">
+        <h2>추천 립 제품</h2>
+        <div class="lip-product-list">
+            <!-- th:each로 제품 리스트를 동적으로 반복 렌더링 -->
+            <div class="lip-product-item" th:each="product : ${lipProducts}">
+                <img th:src="${product.image_link}" alt="Lip Product" />
+                <div class="lip-product-info">
+                    <p class="product-name" th:text="${product.product}"></p>
+                    <a class="product-link" th:href="${product.detail_link}" target="_blank">자세히 보기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 유튜브 영상 추천 섹션 -->
+    <div id="youtube-section">
+        <h2>추천 봄 웜톤 메이크업 영상</h2>
+        <div class="video-container" id="video-container"></div>
+    </div>
+
+    <a href="/" class="btn">메인 페이지로 돌아가기</a>
+</body>
+</html>
+

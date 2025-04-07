@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summer Cool Tone</title>
+  <link rel="stylesheet" href="/css/summer-result.css">
+
+  <script src="/js/api-keys.js"></script>
+  <script src="/js/summer-result.js" defer></script>
+</head>
+<body>
+  <h1>당신의 퍼스널 컬러는 <span class="highlight">여름 쿨톤</span>입니다!</h1>
+  <p><span class="highlight">여름 쿨톤</span> 차가운 파스텔 톤과 은은한 색조가 잘 어울립니다.<br>피부가 <span class="highlight">맑고 시원한 느낌</span> 주며, 차분하고 우아한 이미지를 연출하는 것이 좋습니다.</p>
+
+  <!-- 여름 쿨톤의 특징 카드 -->
+  <div class="card">
+    <div class="text-section">
+      <h2>여름 쿨톤의 특징</h2>
+      <p><strong>피부톤</strong>: 차분하고 맑은 톤, 은은한 차가운 느낌을 주는 피부</p>
+      <p><strong>추천 색상</strong>: 차가운 파스텔 톤, 푸른 계열, 회색 기운이 도는 색상</p>
+      <p><strong>어울리는 메이크업</strong>: 시원하고 은은한 색상의 립 제품, 차분한 느낌의 아이섀도 추천</p>
+    </div>
+    <img src="./image/summer-cool.jpg" alt="여름 쿨톤 이미지">
+  </div>
+
+  <!-- 색상 팔레트 제목 -->
+  <div class="palette-title">여름 쿨톤 팔레트</div>
+
+  <!-- 여름 쿨톤 색상 팔레트 -->
+  <div class="color-palette">
+    <div class="soft-white"><span>soft white</span></div>
+    <div class="rose-beige"><span>rose beige</span></div>
+    <div class="cocoa"><span>cocoa</span></div>
+    <div class="rose-brown"><span>rose brown</span></div>
+    <div class="light-blue-gray"><span>light blue gray</span></div>
+    <div class="charcoal-blue-gray"><span>charcoal blue gray</span></div>
+    <div class="grayed-navy"><span>grayed navy</span></div>
+    <div class="gray-blue"><span>gray blue</span></div>
+    <div class="powder-blue"><span>powder blue</span></div>
+    <div class="sky-blue"><span>sky blue</span></div>
+    <div class="medium-blue"><span>medium blue</span></div>
+    <div class="periwinkle-blue"><span>periwinkle blue</span></div>
+    <div class="pastel-aqua"><span>pastel aqua</span></div>
+    <div class="pastel-blue-green"><span>pastel blue green</span></div>
+    <div class="medium-blue-green"><span>medium blue green</span></div>
+    <div class="deep-blue-green"><span>deep blue green</span></div>
+    <div class="light-lemon-yellow"><span>light lemon yellow</span></div>
+    <div class="powder-pink"><span>powder pink</span></div>
+    <div class="pastel-pink"><span>pastel pink</span></div>
+    <div class="rose-pink"><span>rose pink</span></div>
+    <div class="deep-rose"><span>deep rose</span></div>
+    <div class="watermelon"><span>watermelon</span></div>
+    <div class="blue-red"><span>blue red</span></div>
+    <div class="burgundy"><span>burgundy</span></div>
+    <div class="lavender"><span>lavender</span></div>
+    <div class="orchid"><span>orchid</span></div>
+    <div class="mauve"><span>mauve</span></div>
+    <div class="raspberry"><span>raspberry</span></div>
+    <div class="soft-fuchsia"><span>soft fuchsia</span></div>
+    <div class="plum"><span>plum</span></div>
+  </div>
+
+  <div class="lip-product">
+    <h2>추천 립 제품</h2>
+    <div class="lip-product-list">
+      <!-- th:each로 제품 리스트를 동적으로 반복 렌더링 -->
+      <div class="lip-product-item" th:each="product : ${lipProducts}">
+        <img th:src="${product.image_link}" alt="Lip Product" />
+        <div class="lip-product-info">
+          <p class="product-name" th:text="${product.product}"></p>
+          <a class="product-link" th:href="${product.detail_link}" target="_blank">자세히 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 유튜브 영상 추천 섹션 -->
+  <div id="youtube-section">
+    <h2>추천 여름 쿨톤 메이크업 영상</h2>
+    <div class="video-container" id="video-container"></div>
+  </div>
+
+  <a href="/" class="btn">메인 페이지로 돌아가기</a>
+</body>
+</html>

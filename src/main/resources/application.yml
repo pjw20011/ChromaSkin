@@ -1,0 +1,4 @@
+#spring:
+#  data:
+#    mongodb:
+#      uri: mongodb+srv://jwon:<pjw20011>@mycluster.1h1zz.mongodb.net/Chroma?retryWrites=true&w=majority&appName=myCluster

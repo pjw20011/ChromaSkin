@@ -1,0 +1,312 @@
+body {
+    margin-top: 150px; /* 헤더 높이만큼 여백 추가 */
+    display: flex;
+    justify-content: center;
+}
+
+.nav-link {
+    color: #000;
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    background-color: transparent !important; /* 파란색 배경 없애기 */
+    border: none;
+}
+
+/* 밑줄 추가 */
+.nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px; /* 밑줄 두께 고정 */
+    background-color: #000;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 활성화된 메뉴의 밑줄 스타일 */
+.nav-link.active::after {
+    width: 85%;
+    height: 2px; /* 모든 항목에 동일한 밑줄 두께 적용 */
+}
+
+/* 선택된 항목은 더 굵게 */
+.nav-link.active {
+    font-weight: bold;
+    color: #000 !important; /* 선택된 항목도 검정색 */
+    background-color: transparent !important; /* 선택된 항목의 배경색 투명 */
+}
+
+/* 메뉴 hover 시 밑줄 효과 */
+.nav-link:hover::after {
+    width: 85%;
+    height: 2px; /* hover 시에도 동일한 밑줄 두께 적용 */
+}
+
+/* 카드 스타일 */
+.rounded-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* 좌측 메뉴 배경 색상 변경 및 세로 길이 고정 */
+.sidebar {
+    background-color: #D8C8B2; /* 원하는 색상으로 변경 */
+    min-height: calc(100vh - 70px); /* 헤더 높이를 제외한 화면 높이 */
+    position: sticky; /* 화면 스크롤 시에도 좌측 메뉴가 고정되도록 설정 */
+    top: 70px; /* 헤더 높이만큼 내려오도록 설정 */
+}
+
+.error-message {
+    color: #dc3545; /* 빨간색 텍스트 */
+    font-weight: bold; /* 강조 */
+    margin-bottom: 15px; /* 아래 간격 */
+}
+
+/* 찜 목록 전체 컨테이너 */
+.liked-items-container {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    gap: 15px; /* 박스 간 간격 */
+    max-height: 600px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 스크롤 활성화 */
+    padding-right: 10px; /* 스크롤바와 내용 간 간격 */
+    background-color: #f9f9f9; /* 배경 색 추가 (선택 사항) */
+}
+
+/* 박스 내부 정렬 및 스타일 */
+.liked-item-box {
+    display: flex; /* 가로 정렬 */
+    align-items: center; /* 세로 정렬 */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    gap: 20px; /* 이미지와 텍스트 간 간격 */
+}
+
+/* 박스 hover 효과 */
+.liked-item-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 이미지 스타일 */
+.liked-item-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover; /* 비율 유지하며 크기 조정 */
+    flex-shrink: 0; /* 크기 고정 */
+}
+
+/* 텍스트 컨테이너 */
+.liked-item-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* 텍스트가 남은 공간을 채우도록 설정 */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+}
+
+/* 상품 이름 */
+.liked-item-name {
+    font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    overflow: hidden; /* 넘치는 내용 숨김 */
+    margin-bottom: 5px;
+    width: 400px;
+}
+
+.liked-item-brand-price {
+    display: flex; /* 가로 정렬 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    align-items: center; /* 세로 정렬 */
+}
+
+/* 브랜드명 스타일 */
+.liked-item-brand {
+    font-size: 14px;
+    color: #555;
+    text-align: right; /* 오른쪽 정렬 */
+    margin-bottom: 5px;
+    width: 120px;
+}
+
+/* 가격 스타일 */
+.liked-item-price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: right; /* 오른쪽 정렬 */
+    margin-bottom: 5px;
+    width: 100px;
+}
+
+.unlike-btn {
+    background-color: #ffffff; /* 원하는 빨간색 */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.unlike-btn:hover {
+    background-color: #000000; /* hover 시 더 진한 빨간색 */
+}
+
+/* 아이콘 크기 조정 */
+.unlike-btn i {
+    font-size: 16px;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.board-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.board-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.board-box h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.board-box p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.board-info {
+    display: flex;
+    justify-content: space-between; /* 각 항목 사이의 간격 균등 분배 */
+    align-items: center; /* 텍스트 세로 정렬 */
+    gap: 15px; /* 항목 간 간격 추가 */
+    font-size: 14px; /* 글자 크기 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+}
+
+.board-info span {
+    flex-shrink: 0; /* 텍스트 크기가 작아지지 않도록 고정 */
+}
+
+/* 스크롤바 추가 */
+.board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 500px; /* 최대 높이 */
+    overflow-y: auto; /* 스크롤바 활성화 */
+    padding-right: 10px; /* 스크롤바와 컨텐츠 간 간격 */
+}
+
+/* 제목 제한 및 간격 조정 */
+.board-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    white-space: nowrap;
+    gap: 15px; /* 제목과 다른 항목 간 간격 */
+}
+
+.board-subject {
+    flex: 1; /* 제목의 가변 길이 */
+    font-weight: bold;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis; /* 길면 "..." 처리 */
+    white-space: nowrap;
+}
+
+/* 스크롤바 추가 */
+.board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 600px; /* 최대 높이 */
+    overflow-y: auto; /* 스크롤바 활성화 */
+    padding-right: 10px; /* 스크롤바와 컨텐츠 간 간격 */
+}
+
+/* 컨테이너 스타일 */
+.replies-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 박스 간 간격 */
+    max-height: 600px; /* 최대 높이 */
+    overflow-y: auto; /* 스크롤 추가 */
+    padding-right: 10px;
+}
+
+/* 댓글/대댓글 박스 스타일 */
+.reply-box {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+
+.reply-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.reply-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reply-type {
+    font-weight: bold;
+}
+
+.reply-date {
+    color: #888;
+    font-size: 12px;
+}
+
+/* 댓글/대댓글 본문 스타일 */
+.reply-content {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+.reply-subject {
+    font-weight: bold;
+    color: #333;
+}

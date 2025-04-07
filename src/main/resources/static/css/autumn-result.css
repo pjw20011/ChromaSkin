@@ -1,0 +1,210 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #FFDD99; /* 따뜻한 가을 웜톤 색상 */
+    color: #CC6600;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #CC6600;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #CD853F; /* Peru - 부드러운 브라운 계열 */
+}
+
+
+.color-palette {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.color-palette div {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.color-palette div:hover {
+    transform: scale(1.1);
+}
+
+/* 팔레트 색상 정의 */
+.oyster-white { background-color: #EDE6D6; color: #333; }
+.warm-beige { background-color: #D1B599; }
+.coffee-brown { background-color: #996B48; }
+.dark-chocolate-brown { background-color: #614335; }
+.mahogany { background-color: #8A5A44; }
+.camel { background-color: #C6A287; }
+.gold { background-color: #D4A937; }
+.medium-warm-bronze { background-color: #B28A4C; }
+.yellow-gold { background-color: #E6C068; }
+.mustard { background-color: #D4A644; }
+.pumpkin { background-color: #E87B3D; }
+.terracotta { background-color: #D0874E; }
+.rust { background-color: #A24A2F; }
+.deep-peach { background-color: #E9AA97; }
+.salmon { background-color: #E7957B; }
+.orange { background-color: #E96A3E; }
+.orange-red { background-color: #D14E32; }
+.bittersweet-red { background-color: #D15555; }
+.dark-tomato-red { background-color: #A23936; }
+.lime-green { background-color: #A3CC4E; }
+.chartreuse { background-color: #D0E572; }
+.deep-yellow-green { background-color: #9EAC3F; }
+.moss-green { background-color: #8F9E64; }
+.grayed-yellow-green { background-color: #B8B98A; }
+.olive-green { background-color: #6A7C3D; }
+.jade-green { background-color: #3E7744; }
+.forest-green { background-color: #2D6347; }
+.turquoise { background-color: #58B4C1; }
+.teal-blue { background-color: #307980; }
+.deep-periwinkle-blue { background-color: #5E6D99; }
+
+/* 팔레트 제목 */
+.palette-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #CC6600;
+    font-weight: bold;
+}
+
+/* 카드 스타일 */
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+.card .text-section {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.card img {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+/* 버튼 스타일 */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 30px;
+    background-color: #CC6600; /* 가을 웜톤에 맞는 따뜻한 갈색 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #D28A45; /* 버튼 hover 시 밝은 갈색 */
+}
+
+/* 유튜브 섹션 스타일 */
+#youtube-section {
+    margin-top: 40px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.video-container iframe {
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* 립 제품 섹션 스타일 */
+.lip-product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* 각 제품 간의 간격 */
+}
+
+.lip-product-item {
+    flex-basis: 22%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFE6CC; /* 밝은 가을 웜톤 배경 색상 */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+.lip-product-item img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lip-product-info {
+    margin-top: 15px;
+}
+
+.lip-product-info p {
+    margin: 5px 0;
+    font-size: 1.1rem;
+    color: #CC6600;
+}
+
+.product-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.product-price {
+    color: #D28A45; /* 연한 갈색으로 변경 */
+}
+
+.product-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 20px;
+    background-color: #CC6600; /* 가을 웜톤에 맞는 버튼 색상 */
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.product-link:hover {
+    background-color: #D28A45;
+}

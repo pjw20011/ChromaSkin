@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Personal Color Test</title>
+    <link rel="stylesheet" href="/css/personal-color-question.css">
+
+    <script src="/js/personal-color-question.js" defer></script>
+  </head>
+  <body>
+
+    <h1>Personal Color Test</h1>
+
+    <form method="post" action="/submit-answers">
+
+      <!-- CSRF Token -->
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+      <h3>1. 가장 잘 어울리는 립 색은?</h3>
+      <div class="image-container">
+        <div class="image-item" onclick="selectOption('q1A')">
+          <img th:src="@{'/output_image/image_1.jpg?'+${#dates.createNow().getTime()}}" alt="Spring">
+          <input type="radio" name="q1" id="q1A" value="A" required>
+          <label></label>
+        </div>
+        <div class="image-item" onclick="selectOption('q1B')">
+          <img th:src="@{'/output_image/image_2.jpg?'+${#dates.createNow().getTime()}}" alt="Summer">
+          <input type="radio" name="q1" id="q1B" value="B">
+          <label></label>
+        </div>
+        <div class="image-item" onclick="selectOption('q1C')">
+          <img th:src="@{'/output_image/image_3.jpg?'+${#dates.createNow().getTime()}}" alt="Autumn">
+          <input type="radio" name="q1" id="q1C" value="C">
+          <label></label>
+        </div>
+        <div class="image-item" onclick="selectOption('q1D')">
+          <img th:src="@{'/output_image/image_4.jpg?'+${#dates.createNow().getTime()}}" alt="Winter">
+          <input type="radio" name="q1" id="q1D" value="D">
+          <label></label>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3>2. 피부에 가장 가까운 색은?</h3>
+      <label>
+        <input type="radio" name="q2" value="A,C" required>
+        A : #F1D3AF
+        <div class="color-box" style="background-color: #F1D3AF;"></div>
+        <span th:if="${skinRecommendation == '1'}">사진에 따르면 A를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q2" value="B,D">
+        B : #F3CEBB
+        <div class="color-box" style="background-color: #F3CEBB;"></div>
+        <span th:if="${skinRecommendation == '2'}">사진에 따르면 B를 추천합니다</span>
+      </label>
+
+      <hr>
+
+      <!-- 3번 질문: 머리카락 색상 추천 -->
+      <h3>3. 머리카락에 가장 가까운 색은?</h3>
+      <label>
+        <input type="radio" name="q3" value="A" required>
+        A: #895530
+        <div class="color-box" style="background-color: #895530;"></div>
+        <span th:if="${hairRecommendation == '1'}">사진에 따르면 A를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q3" value="B">
+        B: #2E2E2E
+        <div class="color-box" style="background-color: #2E2E2E;"></div>
+        <span th:if="${hairRecommendation == '2'}">사진에 따르면 B를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q3" value="C">
+        C: #3F2C1E
+        <div class="color-box" style="background-color: #3F2C1E;"></div>
+        <span th:if="${hairRecommendation == '3'}">사진에 따르면 C를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q3" value="D">
+        D: #060405
+        <div class="color-box" style="background-color: #060405;"></div>
+        <span th:if="${hairRecommendation == '4'}">사진에 따르면 D를 추천합니다</span>
+      </label>
+
+      <hr>
+
+      <!-- 4번 질문: 눈동자 색상 추천 -->
+      <h3>4. 눈동자 색은?</h3>
+      <label>
+        <input type="radio" name="q4" value="A" required>
+        A: #895530
+        <div class="color-box" style="background-color: #895530;"></div>
+        <span th:if="${eyeRecommendation == '1'}">사진에 따르면 A를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q4" value="B">
+        B: #2E2E2E
+        <div class="color-box" style="background-color: #2E2E2E;"></div>
+        <span th:if="${eyeRecommendation == '2'}">사진에 따르면 B를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q4" value="C">
+        C: #3F2C1E
+        <div class="color-box" style="background-color: #3F2C1E;"></div>
+        <span th:if="${eyeRecommendation == '3'}">사진에 따르면 C를 추천합니다</span>
+      </label>
+      <label>
+        <input type="radio" name="q4" value="D">
+        D: #060405
+        <div class="color-box" style="background-color: #060405;"></div>
+        <span th:if="${eyeRecommendation == '4'}">사진에 따르면 D를 추천합니다</span>
+      </label>
+
+      <hr>
+
+      <!-- 5번 질문 (그대로 유지) -->
+      <h3>5. 주변에서 듣는 이미지는?</h3>
+      <label>
+        <input type="radio" name="q5" value="A" required> A: 어려 보이고 친밀한 느낌
+      </label>
+      <label>
+        <input type="radio" name="q5" value="B"> B: 부드럽고 여성스러운 느낌
+      </label>
+      <label>
+        <input type="radio" name="q5" value="C"> C: 성숙하고 차분한 느낌
+      </label>
+      <label>
+        <input type="radio" name="q5" value="D"> D: 도시적이며 샤프한 느낌
+      </label>
+
+      <hr>
+
+      <h3>6. 장시간 햇빛에 노출 되었을 때 당신의 피부 상태는 어떤가요?</h3>
+      <label>
+        <input type="radio" name="q6" value="A,C" required>
+        A: 햇볕에 노랗게 타며 피부가 노르스름해집니다.
+      </label>
+      <label>
+        <input type="radio" name="q6" value="B,D">
+        B: 햇볕에 타면 빨갛게 변하고 오래 남아있습니다.
+      </label>
+
+      <hr>
+
+      <h3>7. 본인에게 더 잘 어울린다고 생각하는 옷 색상은 어떤것인가요?</h3>
+      <label>
+        <input type="radio" name="q7" value="A,C" required>
+        A: 따뜻한 주황, 노란색 옷이 잘 어울립니다.
+      </label>
+      <label>
+        <input type="radio" name="q7" value="B,D">
+        B: 차가운 파랑, 회색 옷이 잘 어울립니다.
+      </label>
+
+      <hr>
+
+      <h3>8. 손목 혈관 색상은 어떤 색에 더 가까운가요?</h3>
+      <label>
+        <input type="radio" name="q8" value="A,C" required>
+        A: 녹색
+      </label>
+      <label>
+        <input type="radio" name="q8" value="B,D">
+        B: 파란색
+      </label>
+
+      <hr>
+
+      <h3>9. 주로 착용하고 잘 어울리는 악세사리 색상은 어떤 것 인가요?</h3>
+      <label>
+        <input type="radio" name="q9" value="A,C" required>
+        A: 금색 악세사리가 더 잘 어울립니다.
+      </label>
+      <label>
+        <input type="radio" name="q9" value="B,D">
+        B: 은색 악세사리가 더 잘 어울립니다.
+      </label>
+
+      <br><br>
+      <button type="submit">결과 제출</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Winter Cool Tone</title>
+  <link rel="stylesheet" href="/css/winter-result.css">
+
+  <script src="/js/api-keys.js"></script>
+  <script src="/js/winter-result.js" defer></script>
+</head>
+<body>
+  <h1>당신의 퍼스널 컬러는 <span class="highlight">겨울 쿨톤</span>입니다!</h1>
+  <p>시원하고 선명한 컬러가 잘 어울립니다.<br>강렬하고 세련된 이미지를 강조하세요!</p>
+
+  <!-- 겨울 쿨톤의 특징 카드 -->
+  <div class="card">
+    <div class="text-section">
+      <h2>겨울 쿨톤의 특징</h2>
+      <p><strong>피부톤</strong>: 차갑고 맑은 피부, 선명한 대비감이 있는 색이 잘 어울림</p>
+      <p><strong>추천 색상</strong>: 선명한 파란색, 차가운 베리 계열, 은색, 검정, 흰색</p>
+      <p><strong>어울리는 메이크업</strong>: 시원하고 선명한 색조의 립 제품과 대비를 주는 눈 화장 추천</p>
+    </div>
+    <img src="./image/winter-cool.jpg" alt="겨울 쿨톤 이미지">
+  </div>
+
+  <!-- 색상 팔레트 제목 -->
+  <div class="palette-title">겨울 쿨톤 팔레트</div>
+
+  <!-- 겨울 쿨톤 색상 팔레트 -->
+  <div class="color-palette">
+    <div class="pure-white"><span>pure white</span></div>
+    <div class="light-true-gray"><span>light true gray</span></div>
+    <div class="medium-true-gray"><span>medium true gray</span></div>
+    <div class="charcoal-gray"><span>charcoal gray</span></div>
+    <div class="black"><span>black</span></div>
+    <div class="gray-beige"><span>gray beige</span></div>
+
+    <div class="navy-blue"><span>navy blue</span></div>
+    <div class="true-blue"><span>true blue</span></div>
+    <div class="royal-blue"><span>royal blue</span></div>
+    <div class="hot-turquoise"><span>hot turquoise</span></div>
+    <div class="chinese-blue"><span>chinese blue</span></div>
+    <div class="lemon-yellow"><span>lemon yellow</span></div>
+
+    <div class="light-true-green"><span>light true green</span></div>
+    <div class="true-green"><span>true green</span></div>
+    <div class="emerald-green"><span>emerald green</span></div>
+    <div class="pine-green"><span>pine green</span></div>
+    <div class="shocking-pink"><span>shocking pink</span></div> <!-- 추가 -->
+    <div class="deep-hot-pink"><span>deep hot pink</span></div> <!-- 추가 -->
+
+    <div class="magenta"><span>magenta</span></div>
+    <div class="fuchsia"><span>fuchsia</span></div>
+    <div class="royal-purple"><span>royal purple</span></div>
+    <div class="bright-burgundy"><span>bright burgundy</span></div>
+    <div class="deep-blue-red"><span>deep blue red</span></div>
+    <div class="true-red"><span>true red</span></div>
+
+    <div class="icy-green"><span>icy green</span></div>
+    <div class="icy-yellow"><span>icy yellow</span></div>
+    <div class="icy-aqua"><span>icy aqua</span></div>
+    <div class="icy-violet"><span>icy violet</span></div>
+    <div class="icy-pink"><span>icy pink</span></div>
+    <div class="icy-blue"><span>icy blue</span></div>
+  </div>
+
+  <div class="lip-product">
+    <h2>추천 립 제품</h2>
+    <div class="lip-product-list">
+      <!-- th:each로 제품 리스트를 동적으로 반복 렌더링 -->
+      <div class="lip-product-item" th:each="product : ${lipProducts}">
+        <img th:src="${product.image_link}" alt="Lip Product" />
+        <div class="lip-product-info">
+          <p class="product-name" th:text="${product.product}"></p>
+          <a class="product-link" th:href="${product.detail_link}" target="_blank">자세히 보기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 유튜브 영상 추천 섹션 -->
+  <div id="youtube-section">
+    <h2>추천 겨울 쿨톤 메이크업 영상</h2>
+    <div class="video-container" id="video-container"></div>
+  </div>
+
+  <a href="/" class="btn">메인 페이지로 돌아가기</a>
+</body>
+</html>

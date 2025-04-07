@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <!-- Font Awesome 사용을 위한 링크 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/product-list.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <script src="/js/product-list.js" defer></script>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Header Include -->
+    <th:block th:replace="~{header :: header}"></th:block>
+        <!-- 검색 입력 폼 -->
+        <div class="search-container">
+            <form method="get" action="/cosmetics/products" class="search-box">
+                <input type="hidden" name="cosmeticsType" th:value="${currentCosmeticsType}">
+                <input type="hidden" name="size" th:value="${size}">
+                <input type="hidden" name="sort" th:value="${sort}">
+                <input type="hidden" name="order" th:value="${order}">
+                <input type="text" id="search" name="search" th:value="${search}" placeholder="제품 검색">
+                <button type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- 카테고리 버튼 바 -->
+        <div class="category-bar">
+            <a th:href="@{/cosmetics/products(cosmeticsType='all', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == null || currentCosmeticsType == ''} ? 'active' : ''">All</a>
+            <a th:href="@{/cosmetics/products(cosmeticsType='skin', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == 'skin'} ? 'active' : ''">Skin</a>
+            <a th:href="@{/cosmetics/products(cosmeticsType='pack', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == 'pack'} ? 'active' : ''">Pack</a>
+            <a th:href="@{/cosmetics/products(cosmeticsType='cream', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == 'cream'} ? 'active' : ''">Cream</a>
+            <a th:href="@{/cosmetics/products(cosmeticsType='suncream', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == 'suncream'} ? 'active' : ''">Suncream</a>
+            <a th:href="@{/cosmetics/products(cosmeticsType='toner', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == 'toner'} ? 'active' : ''">Toner</a>
+            <a th:href="@{/cosmetics/products(cosmeticsType='cleansing', search=${search}, size=${size}, sort=${sort}, order=${order})}"
+               th:classappend="${currentCosmeticsType == 'cleansing'} ? 'active' : ''">Cleansing</a>
+        </div>
+        <div class="product-container">
+            <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; margin: 10px 0;">
+                <p th:text="|현재 카테고리: ${currentType != null ? currentType : (currentCosmeticsType == null || currentCosmeticsType == '' ? 'All' : currentCosmeticsType)}|"></p>
+                <p>총 <span th:text="${totalProducts}"></span>개</p>
+                <!-- 정렬 옵션 드롭다운 -->
+                <form method="get" action="/cosmetics/products" style="display: inline;">
+                    <input type="hidden" name="cosmeticsType" th:value="${currentCosmeticsType}">
+                    <input type="hidden" name="search" th:value="${search}">
+                    <input type="hidden" name="size" th:value="${size}">
+                    <label for="sort" style="display: none;">Sort by:</label>
+                    <div class="dropdown-container">
+                        <select name="sort" id="sort" onchange="this.form.submit()" class="custom-dropdown">
+                            <option value="price_after" th:selected="${sort == 'price_after'}">낮은 가격순</option>
+                            <option value="review_count" th:selected="${sort == 'review_count'}">리뷰 많은 순</option>
+                            <option value="rating_average" th:selected="${sort == 'rating_average'}">평점순</option>
+                            <option value="great" th:selected="${sort == 'great'}">인기순</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- 개수 선택 드롭다운 -->
+                <form method="get" action="/cosmetics/products" style="display: inline;">
+                    <input type="hidden" name="cosmeticsType" th:value="${currentCosmeticsType}">
+                    <input type="hidden" name="search" th:value="${search}">
+                    <input type="hidden" name="sort" th:value="${sort}">
+                    <input type="hidden" name="order" th:value="${order}">
+                    <label for="itemsPerPage" style="display: none;">Items per page:</label>
+                    <div class="dropdown-container">
+                        <select name="size" id="itemsPerPage" onchange="this.form.submit()" class="custom-dropdown">
+                            <option value="20" th:selected="${size == 20}">20개씩</option>
+                            <option value="30" th:selected="${size == 30}">30개씩</option>
+                            <option value="40" th:selected="${size == 40}">40개씩</option>
+                        </select>
+                    </div>
+                </form>
+
+                <!-- 초기화 버튼 -->
+                <button onclick="window.location.href='/cosmetics/products';" class="reset-button">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+
+
+
+            <div th:if="${products.totalElements == 0}" style="text-align: center; margin-top: 20px; color: #777;">
+                <p th:text="|현재 ${currentType != null ? currentType : (currentCosmeticsType == null || currentCosmeticsType == '' ? 'All' : currentCosmeticsType)} 카테고리에는 ''${search}''에 해당하는 제품이 없습니다.|"></p>
+            </div>
+
+            <div class="product-list">
+                <div th:each="product : ${products}" class="product-item" th:attr="data-id=${product.id}">
+                    <div class="image-container">
+                        <!-- 제품 이미지 -->
+                        <a th:href="@{/cosmetics/product-detail/{id}(id=${product.id})}">
+                            <img th:src="${product.image_link}" alt="Product Image">
+                        </a>
+                        <!-- 좋아요 버튼 -->
+                        <div class="great-button" onclick="handleLikeButtonClick(event, this)">
+                            <img th:src="${(likedCosmetics != null && likedCosmetics.contains(product.id)) ? '/image/cosmetics_great_af_icon.png' : '/image/cosmetics_great_be_icon.png'}" alt="좋아요 버튼">
+                        </div>
+                    </div>
+                    <!-- 제품 정보 -->
+                    <a th:href="@{/cosmetics/product-detail/{id}(id=${product.id})}">
+                        <p th:text="${product.brand}"></p>
+                        <p th:text="${product.product}"></p>
+                        <p th:text="${product.price_after} + ' 원'"></p>
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- 페이지네이션 링크 -->
+        <div class="pagination" th:if="${totalPages > 1}">
+            <span th:with="pageGroupSize=5">
+                <span th:with="firstPageInGroup=${((currentPage - 1) / pageGroupSize) * pageGroupSize + 1}">
+                    <!-- 이전 페이지 그룹으로 이동 -->
+                    <a th:if="${firstPageInGroup > 1}"
+                       th:href="@{/cosmetics/products(type=${currentType}, search=${search}, size=${size}, sort=${sort}, order=${order}, page=${firstPageInGroup - pageGroupSize})}">
+                       <i class="fas fa-angle-left"></i>
+                    </a>
+
+                                <!-- 페이지 번호 출력 -->
+                    <a th:each="page : ${#numbers.sequence(firstPageInGroup, firstPageInGroup + pageGroupSize - 1 > totalPages ? totalPages : firstPageInGroup + pageGroupSize - 1)}"
+                       th:href="@{/cosmetics/products(type=${currentType}, search=${search}, size=${size}, sort=${sort}, order=${order}, page=${page})}"
+                       th:text="${page}"
+                       th:classappend="${currentPage == page} ? 'active' : ''"></a>
+
+                                <!-- 다음 페이지 그룹으로 이동 -->
+                    <a th:if="${firstPageInGroup + pageGroupSize <= totalPages}"
+                       th:href="@{/cosmetics/products(type=${currentType}, search=${search}, size=${size}, sort=${sort}, order=${order}, page=${firstPageInGroup + pageGroupSize})}">
+                       <i class="fas fa-angle-right"></i>
+                    </a>
+                </span>
+            </span>
+        </div>
+
+        <button onclick="scrollToTop()" id="topButton" title="Go to top">
+            Top &uarr; </button>
+
+    <!-- Footer Include -->
+    <th:block th:replace="footer :: footer"></th:block>
+</div>
+</body>
+</html>

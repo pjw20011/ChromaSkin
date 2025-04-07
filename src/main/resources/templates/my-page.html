@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>마이페이지</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/my-page.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <script src="/js/my-page.js"></script>
+  <meta name="successMessage" th:if="${successMessage}" th:content="${successMessage}">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header Include -->
+    <th:block th:replace="~{header :: header}"></th:block>
+    <div class="container mt-4">
+      <div class="row">
+        <!-- 좌측 메뉴 -->
+        <div class="col-md-3 sidebar p-3">
+          <h2>메뉴</h2>
+          <ul class="nav flex-column nav-pills" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="my-info-tab" data-toggle="pill" href="#my-info" role="tab" aria-controls="my-info" aria-selected="true">내 정보</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="personal-color-tab" data-toggle="pill" href="#personal-color" role="tab" aria-controls="personal-color" aria-selected="false">퍼스널 컬러</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="skin-type-tab" data-toggle="pill" href="#skin-type" role="tab" aria-controls="skin-type" aria-selected="false">피부 타입</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="wishlist-tab" data-toggle="pill" href="#wishlist" role="tab" aria-controls="wishlist" aria-selected="false">내가 좋아요 누른 상품</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="my-self-board-tab" data-toggle="pill" href="#my-self-board" role="tab" aria-controls="my-self-board" aria-selected="false">내가 작성한 글</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="my-self-reply-tab" data-toggle="pill" href="#my-self-reply" role="tab" aria-controls="my-self-reply" aria-selected="false">내가 댓글 단 글</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="my-self-board-great-tab" data-toggle="pill" href="#my-self-board-great" role="tab" aria-controls="my-self-board-great" aria-selected="false">내가 좋아요 누른 글</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 우측 콘텐츠 -->
+        <div class="col-md-9 p-4">
+          <div class="tab-content" id="myTabContent">
+            <!-- 내 정보 -->
+            <div class="tab-pane fade show active" id="my-info" role="tabpanel" aria-labelledby="my-info-tab">
+              <h2>내 정보</h2>
+              <div th:if="${user}" class="mt-4">
+                <div class="rounded-card">
+                  <h4 class="card-title">사용자 정보</h4>
+                  <p><strong>이름:</strong> <span th:text="${user.name}"></span></p>
+                  <p><strong>성별:</strong> <span th:text="${user.gender}"></span></p>
+                  <p><strong>생년월일:</strong> <span th:text="${user.birthDate}"></span></p>
+                  <p><strong>이메일:</strong> <span th:text="${user.email}"></span></p>
+                </div>
+              </div>
+
+              <!-- 비밀번호 변경 폼 -->
+              <h3 class="mt-5">비밀번호 변경</h3>
+              <form th:action="@{/my-page}" method="post" class="mt-4">
+                <div class="rounded-card">
+                  <!-- 현재 비밀번호 -->
+                  <div class="form-group" style="max-width: 300px;">
+                    <label for="oldPassword">현재 비밀번호:</label>
+                    <input type="password" class="form-control" id="oldPassword" name="oldPassword" required />
+                  </div>
+                  <!-- 새 비밀번호 -->
+                  <div class="form-group" style="max-width: 300px;">
+                    <label for="newPassword">새 비밀번호:</label>
+                    <input type="password" class="form-control" id="newPassword" name="newPassword" required />
+                  </div>
+                  <!-- 실패 메시지 출력 -->
+                  <div th:if="${errorMessage}" class="error-message" th:text="${errorMessage}"></div>
+
+                  <!-- 제출 버튼 -->
+                  <button type="submit" class="btn btn-primary">비밀번호 변경</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- 기타 콘텐츠 -->
+            <div class="tab-pane fade" id="skin-type" role="tabpanel" aria-labelledby="skin-type-tab">
+              <h2>피부 타입</h2>
+              <div class="rounded-card">
+                <p><strong>피부 타입:</strong> <span th:text="${user.skinType}"></span></p>
+                <p><strong>마지막 검사 일자:</strong> <span th:text="${user.skinLastTestDate}"></span></p>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="personal-color" role="tabpanel" aria-labelledby="personal-color-tab">
+              <h2>퍼스널 컬러</h2>
+              <div class="rounded-card">
+                <p><strong>퍼스널 컬러:</strong> <span th:text="${user.personalColor}"></span></p>
+                <p><strong>마지막 검사 일자:</strong> <span th:text="${user.personalLastTestDate}"></span></p>
+              </div>
+            </div>
+
+
+            <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="wishlist-tab">
+              <div class="liked-cosmetics">
+                <h2>내가 좋아요 누른 상품</h2>
+                <div id="liked-items" class="liked-items-container">
+                  <!-- 동적으로 박스형 아이템 추가 -->
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="my-self-board" role="tabpanel" aria-labelledby="my-self-board-tab">
+              <h2>내가 작성한 글</h2>
+              <div id="my-boards" class="board-container">
+                <!-- 데이터를 동적으로 추가 -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="my-self-reply" role="tabpanel" aria-labelledby="my-self-reply-tab">
+              <h2>내가 댓글 단 글</h2>
+              <div id="my-replies-container" class="replies-container">
+                <!-- 데이터를 동적으로 추가 -->
+              </div>
+            </div>
+            <div class="tab-pane fade" id="my-self-board-great" role="tabpanel" aria-labelledby="my-self-board-great-tab">
+              <h2>내가 좋아요 누른 글</h2>
+              <div id="my-likes" class="board-container">
+                <!-- 데이터가 동적으로 추가됩니다 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <th:block th:replace="footer :: footer"></th:block>
+  </div>
+  <!-- Footer Include -->
+</body>
+</html>
