@@ -1,5 +1,8 @@
 HELP.md
 
+python_scripts/*.h5
+python_scripts/*.dat
+
 # Ignore Email and Password
 src/main/java/PibuStory/config/EmailConfig
 # Ignore the database
