@@ -1,5 +1,5 @@
-# 🎨 ChromaSkin: 딥러닝 기반 피부 진단 및 뷰티 서비스
-## 캡스톤 디자인 팀프로젝트(3명)
+# 🎨 ChromaSkin: 딥러닝 기반 피부 진단 및 뷰티 서비스 
+## 캡스톤 디자인 팀프로젝트(3명) 
 
 > AI로 피부 타입과 퍼스널 컬러를 진단하고, 실제 브랜드 립/파운데이션을 실시간 체험할 수 있는 뷰티 웹서비스
 
@@ -45,8 +45,8 @@ ChromaSkin은 사용자의 얼굴 이미지를 기반으로 피부 타입 분석
 ## 🎥 시연 영상 및 📄 논문
 
 - ▶️ [시연 영상 바로 보기](https://www.youtube.com/watch?v=ZCcAsUyC3Yk&feature=youtu.be)
-- 📑 [논문 PDF 보기](./592359ba-610a-43bb-994a-5d21636e37e3.pdf)
-- 🗂️ [발표용 PPT 자료 보기](./7525bd75-9183-4d2e-b6ad-4b467b9cb167.pdf)
+- 📑 [논문 PDF 보기](https://drive.google.com/file/d/1oQRk3dbDNg0Z7rPwl2An4oZPhRSst7L1/view?usp=sharing)
+- 🗂️ [발표용 PPT 자료 보기](https://drive.google.com/file/d/1i4Rc1GK_QwsioIRIgdElXcnM7_WVUVHm/view?usp=sharing)
 
 ---
 
