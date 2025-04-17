@@ -44,7 +44,7 @@ ChromaSkin은 사용자의 얼굴 이미지를 기반으로 피부 타입 분석
 
 ## 🎥 시연 영상 및 📄 논문
 
-- ▶️ [시연 영상 바로 보기](./aea536e6-9faa-4e82-987b-066e1e5e73bf.mp4)
+- ▶️ [시연 영상 바로 보기](https://www.youtube.com/watch?v=ZCcAsUyC3Yk&feature=youtu.be)
 - 📑 [논문 PDF 보기](./592359ba-610a-43bb-994a-5d21636e37e3.pdf)
 - 🗂️ [발표용 PPT 자료 보기](./7525bd75-9183-4d2e-b6ad-4b467b9cb167.pdf)
 
